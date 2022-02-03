@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!----------------------------------------------------------------------------------------------------------------
+--
+#Original Author: Aiden B                                       #
+#Date Created: 8/25/21                                         #
+#Version: 1.5                                                 #
+#Date Last Modified: 9/17/21                               #
+#Modified by: Aiden                                          #
+#Modification log:                                        #
+  
+8/26/21- finished css and html form. will add java later
+8/27/21- Finally added functioning js. will build up from there. plan to sumbit for now. added the modal to house the js
+9/2/21- Added content for FAQ, contact, Newsletter(subscribe for updates.)
+9/8/21- reworked layouts and transferred content to other pages for cleaner design, contact and updatelist pages*
+9/9/21- added slideshow of changing box images.
+9/10/21 further edited code to be cleaner. Removed commented out code no longer used. connected java link properly.
+9/13/21- re-inserted mod logs left behind from transfer, oops
+9/17/21- Added favicon. Removed unneeded table elements from form. added actual text to <p> elements. added a needed footer
+ --
+------------------------------------------------------------------------------------------------------------------>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Box Tower home page">
+    <meta name="keywords" content="digital, box, tower, boxtower, code, software, webdesign">
+    <meta name="author" content="Aiden Buxton">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!--Jquery-->
+    <link rel="stylesheet" type="text/css" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
+
+    <!--This is jquery for the modal from @kylefox https://jquerymodal.com/-->
+    <!-- Remember to include jQuery :) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+    <!--JavaScript-->
+    <script src="js/javaScriptHome.js"></script>
+
+    <title>BOX TOWER</title>
+    <link rel="shortcut icon" type="image/jpg" href="img/favicon.ico"/>
+
+</head>
+
+<body>
+
+<header>
+    <div class="themeDefault" id="sideNav"></div>
+    <img id="logo" src="img/logo.png" alt="Box Tower logo.">
+</header>
+
+<nav>
+
+    <h1>
+        <a href="home.html">Home</a> -
+        <a href="updateList.html">Update-List</a> -
+        <a href="contact.html">Contact</a>
+    </h1>
+
+</nav>
+
+<main>
+
+    <h3>Buy your box and add it to the tower! Make sure to sign up for updates and future events so you can track your box's progress!</h3>
+    
+    <img id="slide" src="img/box.png">
+    <div id="slides"> 
+        <img src="img/blue.png">
+        <img src="img/green.png">
+        <img src="img/red.png">
+        <img src="img/white.png">
+    </div>
+    <br>
+
+    <!-- Modal HTML embedded directly into document -->
+    <form>
+        
+        <label for="boxOwner">Box Owner: </label>
+          <br>
+            
+        <input type="text" id="boxOwner" name="boxOwner">
+          <br>
+          <br>
+        <label for="boxColor">Box Color:</label>
+              
+        <select id="boxColor" name="boxColor">
+          <option value="">Color</option>
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+          <option value="blue">Blue</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+        </select>
+              <br>
+              <br>
+              <label for="boxTape">Add your own custom tape:</label>
+              <br>
+              <input type="text" id="boxTape" name="boxTape">
+              <br>
+              <br>
+            <label>&nbsp;</label>
+            <input type="button" id="getBox" value="Get Your Box!">
+
+        </form>
+        <div id="items">
+          <textarea id="boxDesc" rows="7" cols="35">
+          </textarea>
+      </div>
+    
+
+    <div id="accordion">
+        <h3>What is Box Tower?</h3>
+            <div>
+                <p>Box Tower is a digital community project and gathering space. Contribute a personalized box to the box tower and help build it higher. You'll be able to see where your box is placed as well as who you're box neighbors are. Solidify yourself as a piece of digital history in this work of art and community.
+                </p>
+            </div>
+        <h3>Tell me about my Box?</h3>
+            <div>
+                <p>Your box contributes to this site in more ways than one, and can also be for your own gain. With the ability to personalize your box you can advertise links to your social media or simply give a personal shoutout to whoever you please. On top of that, each box helps fund the longevity of this site and it's maintenance.</p>
+            </div>
+        <h3>How do I keep up with the Box Tower?</h3>
+            <div>
+                <p>Part of Box Tower's fun is monitoring it's growth. Click the <a href="updateList.html">'Update-List'</a> link to be directed to an email sign up form where you can recieve regular updates of the Tower's height and analytics of how many people have viewed you Box.
+                </p>
+            </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>    
+    <script src="js/javaScriptSlides.js"></script>
+
+</main>
+
+<footer>&#169 BoxTower 2021</footer>
+
+<!--JavaScript-->
+<script src="js/javaScriptHome.js"></script>
+</body>
+
+</html>

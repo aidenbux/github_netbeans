@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!----------------------------------------------------------------------------------------------------------------
+--
+#Original Author: Aiden B                                       #
+#Date Created: 8/25/21                                         #
+#Version: 1.5                                                 #
+#Date Last Modified: 9/17/21                               #
+#Modified by: Aiden                                          #
+#Modification log:                                        #
+  
+9/8/21- reworked layouts and transferred content to other pages for cleaner design, contact and updatelist pages*
+9/9/21- like updatelist, created contact page for better usability and tied it to the contact.js
+9/10/21 further edited code to be cleaner. Removed commented out code no longer used. connected java link properly.
+9/13/21- re-inserted mod logs left behind from transfer, oops
+9/17/21- Added favicon. added phone input. adjusted spacing of elements for mobile friendly use
+ --
+------------------------------------------------------------------------------------------------------------------>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Box Tower home page">
+    <meta name="keywords" content="digital, box, tower, boxtower, code, software, webdesign">
+    <meta name="author" content="Aiden Buxton">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- <script src="js/javaScriptContact.js"></script> -->
+
+    <title>BOX TOWER</title>
+    <link rel="shortcut icon" type="image/jpg" href="img/favicon.ico"/>
+
+</head>
+
+<body>
+
+<header>
+    <div class="themeDefault" id="sideNav"></div>
+    <img id="logo" src="img/logo.png" alt="Box Tower logo.">
+</header>
+
+<nav>
+
+    <h1>
+        <a href="home.html">Home</a> -
+        <a href="updateList.html">Update-List</a> -
+        <a href="contact.html">Contact</a>
+    </h1>
+
+</nav>
+
+<main>
+
+    
+    
+    <form id="contactForm" name="contactForm" action="contactThank.php" method="post">
+        <h3 class="col-6">Submit a comment, bugs, ideas, or any questions you might have:
+        </h3>
+          <div>
+              <label for="nameC">Name:</label>
+              <br class="mob">
+              <input type="text" id="nameC" name="nameC">
+              <span>*</span>
+          </div>
+          <br>
+          <div>
+              <label for="emailC">Email:</label>
+              <br class="mob">
+              <input type="text" id="emailC" name="emailC">
+              <span>*</span>
+          </div>
+          <br>
+          <div>
+            <label for="PhoneC">Phone:</label>
+            <br class="mob">
+            <input type="text" id="phoneC" name="phoneC">
+            <span>*</span>
+        </div>
+          <br>
+          <br>
+          <div>
+              <label for="commentC">Comments:</label>
+              <br>
+              <textarea id="commentC" name="commentC" rows="4" cols="30"></textarea><br><span>*</span>
+          </div>
+          
+          <div>
+              <label>&nbsp;</label>
+              <input type="button" id="submitForm" value="Submit">
+              <input type="button" id="reset" value="Reset">
+              
+            </div>     
+          
+      </form>
+      <script src="js/javaScriptContact.js"></script>
+    
+    
+
+</main>
+
+<footer>&#169 BoxTower 2021</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+/* Aiden B ModLog
+Date Created: 8/25/21
+Version: 1.5
+Last Modified: 9/17/21
+Modified by: Aiden
+    8/26/21 created the basic template and first page of css.
+    8/27/21 created .barItem .whbg .pic touched nothing else
+    8/31/21 Added Theme red,blue, white, and default
+    9/5/21 started reworking css. began with a blank slate
+    9/8/21 added fine tuning to most display elements
+    9/13/21 added a mobile @media & second background for adjustments & form stylings
+    9/17/21 touched up on styleings for everything. added .mob for some form spacing adjustments
+    */
+
+
+body {
+    background-image: url(../img/backgroundsky2.jpg);
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    
+}
+#logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30%;
+    width: 30%;
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 300px;
+}
+body {
+    top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    background-color: white;
+    
+}
+nav h1 {
+    background-color: white;
+    padding: 5px;
+    text-align: center;
+}
+main {
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px;
+    text-align: center;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+main h3 {
+    margin-left: 5%;
+    margin-right: 5%;
+} 
+button {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+#ex1 {
+    text-align: center;
+}
+form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: large;
+}
+
+form img {
+    display: inline-block;
+    margin: 5%;
+}
+
+footer {
+    margin-bottom: 10%;
+    background-color: white;
+    margin-top: 20px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Slides */
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30%;
+    width: 30%;
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 300px;
+}
+
+#slides img {
+    display: none;
+}
+.container {
+    margin: 10px;
+    border: solid 2px black;
+    border-radius: 10px;
+    min-height: 100px;
+    padding: 5px;
+}
+
+/*Links*/
+a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    
+}
+a:hover {
+    text-decoration: underline;
+}
+span {
+    color: red;
+}
+.mob {
+    display: none;
+}
+/*mobile*/
+@media (max-width: 550px) {
+    main {
+        max-width: 80%;
+    }
+    form {
+        margin-left: 1px;
+        font-size: small;
+    }
+    .mob {
+        display: block;
+    }
+    h1 {
+        font-size: larger;
+    }
+    body {
+        background-image: url(../img/backgroundsky.jpg);
+        background-size: cover;
+        background-color: #6C9400;
+    }
+}
