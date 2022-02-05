@@ -1,5 +1,67 @@
 <?php
+    try {
+            $dsn = 'mysql:host=localhost;dbname=abdesignproject1';
+            $username = 'ej_user';
+            $password = 'Pa$$w0rd';
+            $db = new PDO($dsn, $username, $password);
+                    
+        } catch (PDOException $ex) {
+            $error_message = $e->getMessage();
+            echo 'DB Error: ' .$error_message;
+        }
     
+    //check action
+    $action = filter_input(INPUT_POST, 'action');
+    if ($action == NULL) {
+        $action = filter_input(INPUT_GET, 'action');
+        if ($action == NULL) {
+            $action = 'list_visits';
+        }
+    }
+    
+    if ($action == 'list_visits') {
+        $employee_id = filter_input(INPUT_GET, 'employee_id', FILTER_VALIDATE_INT);
+                if ($employee_id == NULL || $employee_id == FALSE) {
+                    $employee_id = filter_input(INPUT_POST, 'employee_id', FILTER_VALIDATE_INT);
+                    if ($employee_id == NULL || $employee_id == FALSE) {
+                    $employee_id = 1;
+                    }
+                }
+            
+    
+    
+    try { //set query, prepare and bind if needed. execute
+        $queryEmployee = 'SELECT * FROM employee';
+        $statement1 = $db->prepare($queryEmployee);
+        $statement1->execute();
+        $employees = $statement1;
+        
+        $queryVisit = 'SELECT * 
+        FROM visit
+        JOIN employee
+        ON visit.employee_id = employee.employee_id
+        WHERE employee.employee_id = :employee_id
+        ORDER BY visit_date';
+            $statement2 = $db->prepare($queryVisit);
+            $statement2->bindValue(':employee_id', $employee_id);
+            $statement2->execute();
+            $visits = $statement2;
+            //$statement2->closeCursor();
+                
+    } catch (Exception $ex) {
+        $error_message = $e->getMessage();
+        echo 'DB Error ' . $error_message;
+    }
+    } else if ($action == 'delete_visit') {
+        $visit_id = filter_input(INPUT_POST, 'visit_id', FILTER_VALIDATE_INT);
+        $employee_id = filter_input(INPUT_POST, 'employee_id', FILTER_VALIDATE_INT);
+        $queryDelete = 'DELETE FROM visit WHERE visit_id = :visit_id';
+        $statement3 = $db->prepare($queryDelete);
+        $statement3->bindValue(':visit_id', $visit_id);
+        $statement3->execute();
+        $statement3->closeCursor();
+        header("Location: admin.php?employee_id=$employee_id");
+    }
 ?>  
 
 
@@ -63,21 +125,64 @@
     
     <h2>Admin</h2> <h4>Select an account to view 
         assigned Box information: </h4>
+    <aside>
+        <ul style="list-style: none;">
+            <?php foreach ($employees as $employee) : ?>
+            <li>
+                <a href="?employee_id=<?php echo $employee['employee_id']; ?>"> 
+                    <?php echo$employee['first_name'] . ' ' . $employee['last_name']; ?>
+                </a>
+            </li>
+            <?php endforeach; ?>
+            
+        </ul>
+    </aside>
         <hr> 
-        <label>Accounts</label>
+        
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th> 
+                <th>Comments</th>
+                <th>Date</th>
+                
+            </tr>
+            <?php foreach ($visits as $visit) : ?>
+            <tr>
+                <td><?php echo $visit['first_name']; ?></td>
+                <td><?php echo $visit['email_address']; ?></td>
+                <td><?php echo $visit['phone_number']; ?></td>
+                <td><?php echo $visit['visit_msg']; ?></td>
+                <td><?php echo $visit['visit_date']; ?></td>
+                <td>
+                    <form action="admin.php" method="post">
+                        <input type="hidden" name="employee_id" value="<?php echo $visit['employee_id']; ?>">
+                        <input type="hidden" name="action" value="delete_visit"/>
+                        <input type="hidden" name="visit_id" 
+                               value="<?php echo $visit['visit_id']; ?>">
+                        <input type="submit" value="Delete">
+                        
+                    </form>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+        
+<!--        <label>Accounts</label>
         <input type="text"> <label>&nbsp;</label>
               <input type="button" id="search" value="Search">
         
-        <hr>
+        <hr>-->
         
-        <label>Username:</label>
+<!--        <label>Username:</label>
     <span><?php ?></span><br>
 
     <label>User's Email Address:</label>
     <span><?php ?></span><br>
 
     <label>Box Description:</label>
-    <span><?php ?></span><br>
+    <span><?php ?></span><br>-->
     
     
     
