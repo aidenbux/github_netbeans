@@ -44,4 +44,13 @@ class EmployeeDB {
     }
 }
 
+    public static function getEmp() {
+        $db = Database::getDB();
+    $queryEmployee = 'SELECT * FROM employee';
+        $statement1 = $db->prepare($queryEmployee);
+        $statement1->execute();
+        $employees = $statement1;
+        return $employees;
+}
+
 ?>

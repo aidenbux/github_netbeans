@@ -91,7 +91,9 @@
     <h1>
         <a href="home.html">Home</a> -
         <a href="updateList.html">Update-List</a> -
-        <a href="contact.html">Contact</a>
+        <a href="contact.html">Contact</a> -
+        <a href="listemployees.php">Employee List</a> -
+        <a href='admin.php'>Admin</a>
     </h1>
 
 </nav>

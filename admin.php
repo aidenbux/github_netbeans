@@ -1,25 +1,25 @@
 <?php
 
+//
+//    $dsn = 'mysql:host=localhost;dbname=abdesignproject1';
+//    $username = 'root';
+//    $password = 'Pa$$w0rd';
+//    
 
-    $dsn = 'mysql:host=localhost;dbname=abdesignproject1';
-    $username = 'root';
-    $password = 'Pa$$w0rd';
-    
+
 
 
     try {
-//          
-//            require_once ('./model/database.php');
-//              require_once ('./model/visit.php');
-//              require_once ('./model/employee.php');
-//              $db = Database::getDB();
-                $db = new PDO($dsn, $username, $password);
+            require_once ('./model/database.php');
+              require_once ('./model/visit.php');
+              require_once ('./model/employee.php');
+              $db = Database::getDB();
         } catch (PDOException $ex) {
             $error_message = $e->getMessage();
+            
             echo 'DB Error: ' .$error_message;
-        }
-    
-    //check action
+            exit();
+            }
     $action = filter_input(INPUT_POST, 'action');
     if ($action == NULL) {
         $action = filter_input(INPUT_GET, 'action');
@@ -33,21 +33,13 @@
                 if ($employee_id == NULL || $employee_id == FALSE) {
                     $employee_id = filter_input(INPUT_POST, 'employee_id', FILTER_VALIDATE_INT);
                     if ($employee_id == NULL || $employee_id == FALSE) {
-                    $employee_id = 1;
+                    $employee_id = 1;   
                     }
-                }
-            
-    
-    
-    try { //set query, prepare and bind if needed. execute
-//        $queryEmployee = 'SELECT * FROM employee';
-//        $statement1 = $db->prepare($queryEmployee);
-//        $statement1->execute();
-//        $employees = $statement1;
+                    }
+            try {         
+        $employees = EmployeeDB::getEmp();
         
-        $employees = EmployeeDB::getEmployees();
-        
-        $queryVisit = 'SELECT * 
+        $queryVisit = 'SELECT visit_id, visit.first_name, visit.last_name, visit.email_address, visit_reason, visit_msg, visit_date, visit.employee_id
         FROM visit
         JOIN employee
         ON visit.employee_id = employee.employee_id
@@ -125,7 +117,9 @@
     <h1>
         <a href="home.html">Home</a> -
         <a href="updateList.html">Update-List</a> -
-        <a href="contact.html">Contact</a>
+        <a href="contact.html">Contact</a> -
+        <a href="listemployees.php">Employee List</a> -
+        <a href='admin.php'>Admin</a>
     </h1>
 
 </nav>
