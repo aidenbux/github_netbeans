@@ -1,10 +1,19 @@
 <?php
+
+
+    $dsn = 'mysql:host=localhost;dbname=abdesignproject1';
+    $username = 'root';
+    $password = 'Pa$$w0rd';
+    
+
+
     try {
-            $dsn = 'mysql:host=localhost;dbname=abdesignproject1';
-            $username = 'ej_user';
-            $password = 'Pa$$w0rd';
-            $db = new PDO($dsn, $username, $password);
-                    
+//          
+//            require_once ('./model/database.php');
+//              require_once ('./model/visit.php');
+//              require_once ('./model/employee.php');
+//              $db = Database::getDB();
+                $db = new PDO($dsn, $username, $password);
         } catch (PDOException $ex) {
             $error_message = $e->getMessage();
             echo 'DB Error: ' .$error_message;
@@ -31,10 +40,12 @@
     
     
     try { //set query, prepare and bind if needed. execute
-        $queryEmployee = 'SELECT * FROM employee';
-        $statement1 = $db->prepare($queryEmployee);
-        $statement1->execute();
-        $employees = $statement1;
+//        $queryEmployee = 'SELECT * FROM employee';
+//        $statement1 = $db->prepare($queryEmployee);
+//        $statement1->execute();
+//        $employees = $statement1;
+        
+        $employees = EmployeeDB::getEmployees();
         
         $queryVisit = 'SELECT * 
         FROM visit

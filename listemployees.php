@@ -1,45 +1,16 @@
+<<?php
+
+require_once ('./model/database.php');
+
+require_once ('./model/employee.php');
 
 
 
-<?php
 
-/*Mod Log
- *Date, User, Desc
- *2/11/22, Aiden, Use database strucure. Add visit methods.php
- */
 
-    $nameC = filter_input(INPUT_POST, 'nameC');
-    $emailC = filter_input(INPUT_POST, 'emailC', FILTER_VALIDATE_EMAIL);
-    $phoneC = filter_input(INPUT_POST, 'phoneC');
-    $commentC = filter_input(INPUT_POST, 'commentC');
-    
-    //validate inputs
-    if ($nameC == NULL || $emailC == NULL || $phoneC ==NULL || $commentC == NULL) {
-        $error = "Invalid input data, try again.";
-        echo "Form data error: " . $error;
-        exit();
-    } else {
-        //data is valid. define pdo & insert data
-        try {
-//          
-              require_once ('./model/database.php');
-              require_once ('./model/visit.php');
-              
+$employees = EmployeeDB::getEmployees();
 
-              addVisit($nameC, $emailC, $phoneC, $commentC);
-                    
-        } catch (PDOException $ex) {
-            $error_message = $e->getMessage();
-            echo 'DB Error: ' .$error_message;
-        }
-        
-        //addDatabase
-        //INSERT INTO visit
-	//                          (first_name, email_address, phone_number, visit_msg, visit_date, employee_id)
-        
-    }
-    //echo ($nameC);
-?>  
+?>
 
 
 <!DOCTYPE html>
@@ -100,20 +71,16 @@
 
     
     
-    <h2>Thank You, <?php echo $nameC; ?> <br> We will get back to you shortly, <br> Content Sent: </h2>
+    <h2>Employee List: </h2>
     
-    <label>Name:</label>
-    <span><?php echo htmlspecialchars($nameC); ?></span><br>
-
-    <label>Email Address:</label>
-    <span><?php echo htmlspecialchars($emailC); ?></span><br>
-
-    <label>Phone Number:</label>
-    <span><?php echo htmlspecialchars($phoneC); ?></span><br>
-    
-    <label>Comments:</label><br>
-    <span><?php echo $commentC; ?></span><br>
-    
+    <p>
+    <ul style="text-align: left;">
+        <?php foreach ($employees as $employee) : ?>
+        <li> <?php echo $employee->getLastName() . ', '
+                . $employee->getFirstName(); ?></li>
+        <?php endforeach; ?>
+    </ul>
+    </p>
     
 
 </main>
