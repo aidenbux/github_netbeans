@@ -39,8 +39,8 @@
             try {         
         $employees = EmployeeDB::getEmp();
         
-        $queryVisit = 'SELECT visit_id, visit.first_name, visit.last_name, visit.email_address, visit_reason, visit_msg, visit_date, visit.employee_id
-        FROM visit
+        $queryVisit = 'SELECT visit_id, visit.first_name, visit.phone_number, visit.email_address, visit_msg, visit_date, visit.employee_id
+                FROM visit
         JOIN employee
         ON visit.employee_id = employee.employee_id
         WHERE employee.employee_id = :employee_id
@@ -49,6 +49,7 @@
             $statement2->bindValue(':employee_id', $employee_id);
             $statement2->execute();
             $visits = $statement2;
+            
             //$statement2->closeCursor();
                 
     } catch (Exception $ex) {
