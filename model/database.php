@@ -5,6 +5,8 @@
  *2/11/22, Aiden, Create file and pasted Database Class from listeployees.php
  */
 
+
+
 class Database {
     private static $dsn = 'mysql:host=localhost;dbname=abdesignproject1';
     private static $username = 'root';

@@ -3,7 +3,7 @@
 
 /*Mod Log
  *Date, User, Desc
- *2/11/22, Aiden, Create file and pasted Database Class from listeployees.php
+ *2/11/22, Aiden, Create file and sorted out Employee & EmployeeDB classes
  */
 
 class Employee {

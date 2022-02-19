@@ -5,7 +5,7 @@
 
 /*Mod Log
  *Date, User, Desc
- *2/11/22, Aiden, Use database strucure. Add visit methods.php
+ *2/11/22, Aiden, Created. Use database strucure. Add visit methods.php
  */
 
     $nameC = filter_input(INPUT_POST, 'nameC');

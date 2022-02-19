@@ -1,15 +1,25 @@
 <?php
 
-//
-//    $dsn = 'mysql:host=localhost;dbname=abdesignproject1';
-//    $username = 'root';
-//    $password = 'Pa$$w0rd';
-//    
+ /*Mod Log
+ *Date, User, Desc
+ *2/11/22, Aiden, Created file
+  * 2/18/22 connected to valid_admin.php & secure_conn.php
+ */
 
+    require_once('util/secure_conn.php'); 
+    require_once('util/valid_admin.php');
+
+    $password = 'sesame';
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+
+    $valid_password = password_verify($password,
+    '$2y$10$xIqN2cVy8HVuKNKUwxFQR.xRP9oRj.FF8r52spVc.XCaEFy7iLHmu');
+    
 
 
 
     try {
+            
             require_once ('./model/database.php');
               require_once ('./model/visit.php');
               require_once ('./model/employee.php');

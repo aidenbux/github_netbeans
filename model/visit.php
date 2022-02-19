@@ -3,7 +3,8 @@
 
 /*Mod Log
  *Date, User, Desc
- *2/11/22, Aiden, Create file and pasted Database Class from listeployees.php
+ *2/11/22, Aiden, Create file and validations. 
+ *2/15/22, Aiden, Removed last name as it wasn't needed and caused conflict
  */
 
 function addVisit($nameC, $emailC, $phoneC, $commentC) {
