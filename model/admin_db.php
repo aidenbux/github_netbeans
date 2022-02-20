@@ -5,7 +5,8 @@
 /*Mod Log
  *Date, User, Desc
  *2/17/22, Aiden, Created file and and properly connected between valid_admin.php
- */
+    *trying to fix Git commit
+  */
 
 function add_admin($email, $password) {
     global $db;
